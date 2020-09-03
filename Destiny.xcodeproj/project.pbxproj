@@ -14,6 +14,7 @@
 		D408F8F224FEB57200C619DC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D408F8F124FEB57200C619DC /* Preview Assets.xcassets */; };
 		D408F8F524FEB57200C619DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D408F8F324FEB57200C619DC /* LaunchScreen.storyboard */; };
 		D408F90624FED58C00C619DC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D408F90824FED58C00C619DC /* Localizable.strings */; };
+		D4CDF19425013B5B003C2AC0 /* ShakeGestureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDF19325013B5B003C2AC0 /* ShakeGestureManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D408F90724FED58C00C619DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D408F90E24FED8A600C619DC /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		D408F90F24FED8B400C619DC /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D4CDF19325013B5B003C2AC0 /* ShakeGestureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeGestureManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				D408F8F324FEB57200C619DC /* LaunchScreen.storyboard */,
 				D408F8F624FEB57200C619DC /* Info.plist */,
 				D408F8F024FEB57200C619DC /* Preview Content */,
+				D4CDF19325013B5B003C2AC0 /* ShakeGestureManager.swift */,
 			);
 			path = Destiny;
 			sourceTree = "<group>";
@@ -155,6 +158,7 @@
 			files = (
 				D408F8E924FEB57100C619DC /* AppDelegate.swift in Sources */,
 				D408F8EB24FEB57100C619DC /* SceneDelegate.swift in Sources */,
+				D4CDF19425013B5B003C2AC0 /* ShakeGestureManager.swift in Sources */,
 				D408F8ED24FEB57100C619DC /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

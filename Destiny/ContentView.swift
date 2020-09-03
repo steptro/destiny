@@ -8,6 +8,17 @@
 
 import SwiftUI
 
+extension Binding {
+    func onChange(_ handler: @escaping (Value) -> Void) -> Binding<Value> {
+        return Binding(
+            get: { self.wrappedValue },
+            set: { selection in
+                self.wrappedValue = selection
+                handler(selection)
+        })
+    }
+}
+
 struct ContentView: View {
     @State private var destiny: String = ""
     @State private var selectedOption = 0
@@ -15,11 +26,7 @@ struct ContentView: View {
     
     var options = [1, 3, 5, 7, 9]
     let defaultPadding: CGFloat = 20
-    
-    init() {
-         UITableView.appearance().tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
-         UITableView.appearance().tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: Double.leastNonzeroMagnitude))
-    }
+
     
     var body: some View {
         NavigationView {
@@ -36,7 +43,7 @@ struct ContentView: View {
                     Spacer()
                 }.padding(.top, defaultPadding)
                 
-                Picker("Best-of", selection: $selectedOption) {
+                Picker(selection: $selectedOption.onChange(dismissKeyboard), label: Text("Best-of")) {
                     ForEach(0 ..< options.count) {
                         Text(String(self.options[$0]))
                     }
@@ -45,9 +52,7 @@ struct ContentView: View {
                 Button("Find out your destiny") {
                     self.modalDisplayed = true
                 }.font(.headline).sheet(isPresented: $modalDisplayed) {
-                    SheetView(onDismiss: {
-                        self.modalDisplayed = false
-                    }, destiny: self.destiny)
+                    SheetView(bestOf: self.options[self.selectedOption], destiny: self.destiny)
                 }.disabled(destiny.count == 0)
                 
                 Spacer()
@@ -55,7 +60,10 @@ struct ContentView: View {
             .padding(defaultPadding)
             .navigationBarTitle("Create your destiny")
         }
-        
+    }
+    
+    func dismissKeyboard(_ tag: Int) {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
     }
 }
 
@@ -73,27 +81,61 @@ public struct CustomTextFieldStyle : TextFieldStyle {
 
 
 struct SheetView: View {
-    var onDismiss: () -> ()
+    @Environment(\.presentationMode) var presentationMode
 
+    var bestOf: Int
     @State var destiny: String
-
+    @State private var winningScore: Int = -1
     @State private var yesScore = 0
     @State private var noScore = 0
-
+    @State private var isWinner = false;
+    
     var body: some View {
         NavigationView {
-            VStack {
-                HStack {
-                    Text("\(yesScore)").font(.largeTitle)
-                    Text(" - ").font(.largeTitle)
-                    Text("\(yesScore)").font(.largeTitle)
-                    }.padding(.top, 25)
-                Spacer()
+            ZStack {
+                ShakableViewRepresentable().allowsHitTesting(false)
+                VStack {
+                    HStack {
+                        Text("\(yesScore)")
+                        Text(" - ")
+                        Text("\(noScore)")
+                    }.padding(.top, 25).font(.system(size: 75))
+                    
+                    if !isWinner {
+                        Text("Shake or click next round to play the next round").font(.callout).padding(.top, 25).padding(.bottom, 10).padding(.leading, 20)
+                        Button("Next round") {
+                            self.doRound()
+                        }
+                    }
+                    
+                    Spacer().alert(isPresented: $isWinner) {
+                        Alert(title: Text(destiny), message: Text(yesScore > noScore ? "Yes" : "No"))
+                    }
+                }
+                .navigationBarTitle(Text(destiny), displayMode: .inline)
+                .navigationBarItems(trailing: Button("Done") {
+                    self.presentationMode.wrappedValue.dismiss()
+                })
+                    .onReceive(messagePublisher) { _ in
+                        self.doRound()
+                }
             }
-            .navigationBarTitle(Text(destiny), displayMode: .inline)
-            .navigationBarItems(trailing: Button("Done") {
-                self.onDismiss()
-            })
+            
+        }.onAppear() {
+            self.winningScore = Int(Double(self.bestOf / 2).rounded()) + 1
+        }
+    }
+    
+    func doRound() {
+        let random = Float.random(in: 0 ..< 1)
+        if (random > 0.5) {
+            yesScore += 1
+        } else {
+            noScore += 1
+        }
+        
+        if (yesScore == winningScore || noScore == winningScore) {
+            isWinner = true
         }
     }
 }
@@ -102,5 +144,4 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().environment(\.locale, .init(identifier: "en"))
     }
-
 }
