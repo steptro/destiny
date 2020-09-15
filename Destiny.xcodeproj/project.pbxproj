@@ -15,6 +15,11 @@
 		D408F8F524FEB57200C619DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D408F8F324FEB57200C619DC /* LaunchScreen.storyboard */; };
 		D408F90624FED58C00C619DC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D408F90824FED58C00C619DC /* Localizable.strings */; };
 		D4CDF19425013B5B003C2AC0 /* ShakeGestureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDF19325013B5B003C2AC0 /* ShakeGestureManager.swift */; };
+		D4CDF19725025F7C003C2AC0 /* DestinyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDF19625025F7C003C2AC0 /* DestinyView.swift */; };
+		D4CDF19A250260F3003C2AC0 /* CustomTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDF199250260F3003C2AC0 /* CustomTextFieldStyle.swift */; };
+		D4CDF19C25026197003C2AC0 /* NameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDF19B25026197003C2AC0 /* NameView.swift */; };
+		D4CDF19E250261E5003C2AC0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDF19D250261E5003C2AC0 /* SettingsView.swift */; };
+		D4CDF1A025026BAA003C2AC0 /* AlertControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDF19F25026BAA003C2AC0 /* AlertControlView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,11 @@
 		D408F90E24FED8A600C619DC /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		D408F90F24FED8B400C619DC /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D4CDF19325013B5B003C2AC0 /* ShakeGestureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeGestureManager.swift; sourceTree = "<group>"; };
+		D4CDF19625025F7C003C2AC0 /* DestinyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinyView.swift; sourceTree = "<group>"; };
+		D4CDF199250260F3003C2AC0 /* CustomTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldStyle.swift; sourceTree = "<group>"; };
+		D4CDF19B25026197003C2AC0 /* NameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameView.swift; sourceTree = "<group>"; };
+		D4CDF19D250261E5003C2AC0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D4CDF19F25026BAA003C2AC0 /* AlertControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertControlView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +72,8 @@
 		D408F8E724FEB57100C619DC /* Destiny */ = {
 			isa = PBXGroup;
 			children = (
+				D4CDF198250260E5003C2AC0 /* Custom */,
+				D4CDF19525025F64003C2AC0 /* Views */,
 				D408F8E824FEB57100C619DC /* AppDelegate.swift */,
 				D408F8EA24FEB57100C619DC /* SceneDelegate.swift */,
 				D408F8EC24FEB57100C619DC /* ContentView.swift */,
@@ -81,6 +93,25 @@
 				D408F8F124FEB57200C619DC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D4CDF19525025F64003C2AC0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D4CDF19625025F7C003C2AC0 /* DestinyView.swift */,
+				D4CDF19B25026197003C2AC0 /* NameView.swift */,
+				D4CDF19D250261E5003C2AC0 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D4CDF198250260E5003C2AC0 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				D4CDF199250260F3003C2AC0 /* CustomTextFieldStyle.swift */,
+				D4CDF19F25026BAA003C2AC0 /* AlertControlView.swift */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,7 +188,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D408F8E924FEB57100C619DC /* AppDelegate.swift in Sources */,
+				D4CDF19E250261E5003C2AC0 /* SettingsView.swift in Sources */,
 				D408F8EB24FEB57100C619DC /* SceneDelegate.swift in Sources */,
+				D4CDF1A025026BAA003C2AC0 /* AlertControlView.swift in Sources */,
+				D4CDF19C25026197003C2AC0 /* NameView.swift in Sources */,
+				D4CDF19A250260F3003C2AC0 /* CustomTextFieldStyle.swift in Sources */,
+				D4CDF19725025F7C003C2AC0 /* DestinyView.swift in Sources */,
 				D4CDF19425013B5B003C2AC0 /* ShakeGestureManager.swift in Sources */,
 				D408F8ED24FEB57100C619DC /* ContentView.swift in Sources */,
 			);
