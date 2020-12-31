@@ -35,10 +35,18 @@ struct NameView: View {
                 Divider()
                 
                 if names.count > 0 {
-                    List {
-                        ForEach((0..<names.count), id: \.self) { i in
-                            Text(self.names[i])
-                        }.onDelete(perform: deleteItems)
+                    if #available(iOS 14.0, *) {
+                        List {
+                            ForEach((0..<names.count), id: \.self) { i in
+                                Text(self.names[i])
+                            }.onDelete(perform: deleteItems)
+                        }.listStyle(InsetListStyle())
+                    } else {
+                        List {
+                            ForEach((0..<names.count), id: \.self) { i in
+                                Text(self.names[i])
+                            }.onDelete(perform: deleteItems)
+                        }.listStyle(GroupedListStyle())
                     }
                 } else {
                     Spacer()
